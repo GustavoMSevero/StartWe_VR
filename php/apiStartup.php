@@ -287,10 +287,34 @@ switch ($option) {
         }
 
             echo json_encode($return);
+
         break;
-    
-    default:
-        # code...
+
+    case 'Get My Startups':
+
+        $iduser = $_GET['iduser'];
+
+        $getMyStartups=$pdo->prepare("SELECT id, nameStartup, description FROM startup WHERE iduser=:iduser");
+        $getMyStartups->bindValue(":iduser", $iduser);
+        $getMyStartups->execute();
+
+        while ($linha=$getMyStartups->fetch(PDO::FETCH_ASSOC)) {
+
+            $id = $linha['id'];
+            $nameStartup = $linha['nameStartup'];
+            $description = $linha['description'];
+
+            $return[] = array(
+                'idStartup' => $id,
+                'nameStartup' => $nameStartup,
+                'description' => $description
+            );
+
+        }
+
+        echo json_encode($return);
+
         break;
-}
+    }
+
 ?>
