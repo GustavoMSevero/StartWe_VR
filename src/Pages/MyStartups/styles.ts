@@ -96,3 +96,8 @@ export const StartupLink = styled.div`
     width: 150px;
 `;
 
+export const Pagination = styled.div`
+     margin-top: 20px;
+     margin-left: 40%;
+`
+

@@ -22,7 +22,8 @@ import { TopHeader,
     DataStartup, 
     StartupName, 
     StartupDescription, 
-    StartupLink 
+    StartupLink,
+    Pagination
 } from "./styles";
 
 const ITEMS_PER_PAGE = 10; // <-- quantas cidades por página (alterar aqui se quiser)
@@ -66,7 +67,6 @@ function MyStartups() {
         return pages;
     };
 
-    // const [startups, setStartups] = useState<Startups[]>([]);
 
     return (
         <div>
@@ -98,6 +98,59 @@ function MyStartups() {
                                 </div>
                             ))
                         : null}
+                        {/* ---------- Controles de paginação ---------- */}
+                {totalItems > 0 && (
+                    <Pagination>
+                        <span>
+                            Mostrando {startIndex + 1}–{Math.min(endIndex, totalItems)} de {totalItems} items
+                        </span>
+
+                        <div style={{ flexGrow: 1 }} />
+
+                        <button
+                            onClick={() => setCurrentPage(1)}
+                            disabled={currentPage === 1}
+                        >
+                            Primeira
+                        </button>
+
+                        <button
+                            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                            disabled={currentPage === 1}
+                        >
+                            Anterior
+                        </button>
+
+                        {getPageNumbers().map((num) => (
+                            <button
+                                key={num}
+                                onClick={() => setCurrentPage(num)}
+                                style={{
+                                    fontWeight: currentPage === num ? "bold" : "normal",
+                                    backgroundColor: currentPage === num ? "#ddd" : "transparent",
+                                }}
+                            >
+                                {num}
+                            </button>
+                        ))}
+
+                        <button
+                            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                        >
+                            Próxima
+                        </button>
+
+                        <button
+                            onClick={() => setCurrentPage(totalPages)}
+                            disabled={currentPage === totalPages}
+                        >
+                            Última
+                        </button>
+                    </Pagination>
+                )}
+
+                {totalItems === 0 && <p>Nenhum item cadastrado ainda.</p>}
                     </MainContent>
                 </Body>
             </Page>
