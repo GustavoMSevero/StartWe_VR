@@ -39,19 +39,60 @@ export const MainContent = styled.main`
     margin-left: 20%;
 `;
 
-export const InfoBlock = styled.div`
-    margin-bottom: 16px;
+export const InfoStartup = styled.div`
+    display: flex;
 `;
 
-export const InfoLabel = styled.div`
-    margin-top: 10px;
+export const NameStartup = styled.div`
+    width: 150px;
+    background-color:rgba(240, 240, 240, 0.85);
+    color: #1a1a1a;
     font-size: 14px;
     font-weight: 700;
-    color: #1a1a1a;
     margin-bottom: 2px;
+    width: 150px;
+    font-weight: 700;
+    color: #1a1a1a;
 `;
 
-export const InfoValue = styled.div`
+export const DescriptionStartup = styled.div`
+    width: 150px;
+    background-color:rgba(240, 240, 240, 0.85);
+    margin-left: 10px;
+    color: #1a1a1a;
     font-size: 14px;
-    color: #888;
+    font-weight: 700;
+    margin-bottom: 2px;
+    width: 150px;
+    font-weight: 700;
+    color: #1a1a1a;
 `;
+
+export const LinkStartup = styled.div`
+    width: 150px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    width: 150px;
+    font-weight: 700;
+    color: #1a1a1a;
+`;
+
+export const DataStartup = styled.div`
+    display: flex;
+`;
+
+export const StartupName = styled.div`
+    width: 150px;
+`;
+
+export const StartupDescription = styled.div`
+    margin-left: 10px;
+    width: 150px;
+`;
+
+export const StartupLink = styled.div`
+    width: 150px;
+`;
+
