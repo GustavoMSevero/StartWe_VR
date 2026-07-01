@@ -170,7 +170,6 @@ switch ($option) {
 
     case 'Update User Data':
 
-        // print_r($data);
         $id = $data->id;
         $city = $data->city;
         $email = $data->email;
@@ -188,7 +187,8 @@ switch ($option) {
 
         $return = array(
             'status' => $status,
-            'msg' => $msg
+            'msg' => $msg,
+            'username' => $username
         );
 
         echo json_encode($return);
