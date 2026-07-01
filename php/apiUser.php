@@ -141,6 +141,60 @@ switch ($option) {
         }
         
         break;
+
+    case 'Get User Data To Edit':
+
+        $iduser = $_GET['iduser'];
+
+        $getUserDataToEdit=$pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $getUserDataToEdit->bindValue(":id", $iduser);
+        $getUserDataToEdit->execute();
+
+        while ($linha=$getUserDataToEdit->fetch(PDO::FETCH_ASSOC)) {
+
+            $id = $linha['id'];
+            $city = $linha['city'];
+            $email = $linha['email'];
+            $user = $linha['user'];
+
+            $return = array(
+                'city' => $city,
+                'email' => $email,
+                'username' => $user
+            );
+        }
+
+        echo json_encode($return);
+
+        break;
+
+    case 'Update User Data':
+
+        // print_r($data);
+        $id = $data->id;
+        $city = $data->city;
+        $email = $data->email;
+        $username = $data->username;
+
+        $updateUser=$pdo->prepare("UPDATE users SET city=:city, email=:email, user=:user WHERE id=:id");
+        $updateUser->bindValue(":city", $city);
+        $updateUser->bindValue(":email", $email);
+        $updateUser->bindValue(":user", $username);
+        $updateUser->bindValue(":id", $id);
+        $updateUser->execute();
+
+        $status = 1;
+        $msg = "Usuário atualizado com sucesso!";
+
+        $return = array(
+            'status' => $status,
+            'msg' => $msg
+        );
+
+        echo json_encode($return);
+
+        break;
+
     default:
         # code...
         break;
