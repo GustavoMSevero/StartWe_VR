@@ -81,7 +81,7 @@ function EditUser() {
         <Page>
             <TopHeader>
                 <Brand>StartUs</Brand>
-                <HeaderTitle>Perfil Startup</HeaderTitle>
+                <HeaderTitle>Perfil Usuário</HeaderTitle>
             </TopHeader>
 
             <Body>
