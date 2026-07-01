@@ -117,7 +117,7 @@ function Feed() {
                     <StartupCard>
                         <StartupLogo>
                             <LogoIcon>🚀</LogoIcon>
-                            StartWe
+                            StartUs
                         </StartupLogo>
                         {currentStartups.length > 0
                             ? currentStartups.map((startup) => (
