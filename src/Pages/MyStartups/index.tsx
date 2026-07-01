@@ -9,7 +9,21 @@ type Startups = {
     description: string;
 };
 
-import { InfoBlock, InfoLabel, InfoValue, TopHeader, Brand, HeaderTitle, Body, Page, MainContent } from "./styles";
+import { TopHeader, 
+    Brand, 
+    HeaderTitle, 
+    Body, 
+    Page, 
+    MainContent, 
+    InfoStartup, 
+    NameStartup, 
+    DescriptionStartup, 
+    LinkStartup, 
+    DataStartup, 
+    StartupName, 
+    StartupDescription, 
+    StartupLink 
+} from "./styles";
 
 const ITEMS_PER_PAGE = 10; // <-- quantas cidades por página (alterar aqui se quiser)
 
@@ -59,7 +73,7 @@ function MyStartups() {
             <Page>
                 <TopHeader>
                     <Brand>StartUs</Brand>
-                    <HeaderTitle>Perfil Startup</HeaderTitle>
+                    <HeaderTitle>Minhas Startups</HeaderTitle>
                 </TopHeader>
 
                 <Body>
@@ -69,16 +83,18 @@ function MyStartups() {
                     {currentStartups.length > 0
                         ? currentStartups.map((myStartups) => (
                                 <div key={myStartups.idStartup}>
-                                    <InfoBlock>
-                                        <InfoLabel>Nome Startup:</InfoLabel>
-                                        <InfoValue>{myStartups.nameStartup}</InfoValue>
-                                    </InfoBlock>
+                                <InfoStartup>
+                                    <NameStartup>Nome Startup</NameStartup>
+                                    <DescriptionStartup>Descrição (resumo)</DescriptionStartup>
+                                    <LinkStartup></LinkStartup>
+                                </InfoStartup>
 
-                                    <InfoBlock>
-                                        <InfoLabel>Descrição (resumo):</InfoLabel>
-                                        <InfoValue>{myStartups.description}</InfoValue>
-                                    </InfoBlock>
-                                    <Link to={`/startup/${myStartups.idStartup}`}>Ver</Link>
+                                <DataStartup>
+                                    <StartupName>{myStartups.nameStartup}</StartupName>
+                                    <StartupDescription>{myStartups.description}</StartupDescription>
+                                    <StartupLink><Link to={`/startup/${myStartups.idStartup}`}>Ver</Link></StartupLink>
+                                </DataStartup>
+                                    
                                 </div>
                             ))
                         : null}
