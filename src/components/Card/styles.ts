@@ -4,7 +4,7 @@ const purple = "#3f3d89";
 
 export const Sidebar = styled.aside`
     flex-shrink: 0;
-    width: 220px;
+    width: 250px;
     padding: 24px 20px;
     border-radius: 12px;
     background-color: ${purple};
