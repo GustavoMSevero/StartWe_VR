@@ -29,6 +29,7 @@ import {
     ParticipateButton,
     Pagination,
 } from "./styles";
+import Card from "../../components/Card";
 
 type Startups = {
     idStartup: number;
@@ -66,10 +67,6 @@ type Startups = {
 const ITEMS_PER_PAGE = 10; // <-- quantas cidades por página (alterar aqui se quiser)
 
 function Feed() {
-    const navigate = useNavigate();
-
-    const username = localStorage.getItem("username") ?? "";
-    const iduser = localStorage.getItem("iduser") ?? "";
 
     const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -90,12 +87,6 @@ function Feed() {
     useEffect(() => {
         getStartups();
     }, []);
-
-    function logout() {
-        localStorage.removeItem("iduser");
-        localStorage.removeItem("username");
-        navigate("/");
-    }
 
     const totalItems = startups.length;
     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -120,20 +111,7 @@ function Feed() {
             </TopHeader>
 
             <Body>
-                <Sidebar>
-                    <Avatar><img src={avatarLogo} alt="Avatar" width={72} height={72} /></Avatar>
-                    <NavMenu>
-                    <Link id="link" to="/feed">Startups</Link>
-                    <Link id="link" to={`/editar-usuario/${iduser}`}>Perfil usuário</Link>
-                        <NavText>Nome: {username || "—"}</NavText>
-                        <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
-                        <Link id="link" to="/minhas-startups">Minhas Startups</Link>
-                        <NavText>Notificações:</NavText>
-                        <NavItem type="button" onClick={logout}>
-                            Sair
-                        </NavItem>
-                    </NavMenu>
-                </Sidebar>
+                <Card />
 
                 <MainContent>
                     <StartupCard>
