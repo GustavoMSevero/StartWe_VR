@@ -6,6 +6,7 @@ import { Sidebar, Avatar, NavMenu, NavText, NavItem } from "./styles";
 
 function Card() {
     const navigate = useNavigate();
+    
     const iduser = localStorage.getItem("iduser") ?? "";
     const username = localStorage.getItem("username") ?? "";
 
@@ -14,6 +15,7 @@ function Card() {
         localStorage.removeItem("username");
         navigate("/");
     }
+
     return (
         <Sidebar>
             <Avatar><img src={avatarLogo} alt="Avatar" width={72} height={72} /></Avatar>
@@ -22,7 +24,7 @@ function Card() {
             <Link id="link" to={`/editar-usuario/${iduser}`}>Perfil usuário</Link>
                 <NavText>Nome: {username || "—"}</NavText>
                 <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
-                <Link id="link" to="/minhas-startups">Minhas Startups</Link>
+                <Link id="link" to={`/minhas-startups/${iduser}`}>Minhas Startups</Link>
                 <NavText>Notificações:</NavText>
                 <NavItem type="button" onClick={logout}>
                     Sair
