@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
-import avatarLogo from '../../assets/avatars/admin.png';
 
 type inputObject = {
     id: number;
@@ -53,6 +51,7 @@ function EditUser() {
         })
         .then(function(response) {
             setInput(response.data)
+            localStorage.setItem("username", response.data.username);
         })
     }
 
