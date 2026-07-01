@@ -5,6 +5,7 @@ import SelectProfile from './Pages/SelectProfile'
 import StartupProfile from './Pages/StartupProfile'
 import ParticipantProfile from './Pages/ParticipantProfile'
 import Feed from './Pages/Feed'
+import EditUser from './Pages/EditUser'
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path: "/feed",
         element: <Feed />
+    },
+    {
+        path: "/editar-usuario/:iduser",
+        element: <EditUser />
     },
 ])
 
