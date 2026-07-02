@@ -300,9 +300,137 @@ switch ($option) {
 
         while ($linha=$getMyStartups->fetch(PDO::FETCH_ASSOC)) {
 
-            $id = $linha['id'];
+            $$idStartup = $linha['id'];
+            $iduser = $linha['iduser'];
             $nameStartup = $linha['nameStartup'];
+            $nameResponsable = $linha['nameResponsable'];
             $description = $linha['description'];
+            $investment = $linha['needInvestment'];
+
+            if($investment == 1) {
+                $investment = "Sim";
+            } else {
+                $investment = "Não";
+            }
+            
+            $bpComercial = $linha['bpComercial'];
+            if($bpComercial == 1) {
+                $bpComercial = "Sim";
+            } else {
+                $bpComercial = "Não";
+            }
+            $bpAccounting = $linha['bpAccounting'];
+            if($bpAccounting == 1) {
+                $bpAccounting = "Sim";
+            } else {
+                $bpAccounting = "Não";
+            }
+            $bpDeveloper = $linha['bpDeveloper'];
+            if($bpDeveloper == 1) {
+                $bpDeveloper = "Sim";
+            } else {
+                $bpDeveloper = "Não";
+            }
+            $bpDesigner = $linha['bpDesigner'];
+            if($bpDesigner == 1) {
+                $bpDesigner = "Sim";
+            } else {
+                $bpDesigner = "Não";
+            }
+            $bpFinancial = $linha['bpFinancial'];
+            if($bpFinancial == 1) {
+                $bpFinancial = "Sim";
+            } else {
+                $bpFinancial = "Não";
+            }
+            $bpManagement = $linha['bpManagement'];
+            if($bpManagement == 1) {
+                $bpManagement = "Sim";
+            } else {
+                $bpManagement = "Não";
+            }
+            $bpLegal = $linha['bpLegal'];
+            if($bpLegal == 1) {
+                $bpLegal = "Sim";
+            } else {
+                $bpLegal = "Não";
+            }
+            $bpMarketing = $linha['bpMarketing'];
+            if($bpMarketing == 1) {
+                $bpMarketing = "Sim";
+            } else {
+                $bpMarketing = "Não";
+            }
+            $bpOtherChecked = $linha['bpOtherChecked'];
+            if($bpOtherChecked == 1) {
+                $bpOtherChecked = "Sim";
+            } else {
+                $bpOtherChecked = "Não";
+            }
+
+            $bpOther = $linha['bpOther'];
+
+            $spComercial = $linha['spComercial'];
+            if($spComercial == 1) {
+                $spComercial = "Sim";
+            } else {
+                $spComercial = "Não";
+            }
+            $spAccounting = $linha['spAccounting'];
+            if($spAccounting == 1) {
+                $spAccounting = "Sim";
+            } else {
+                $spAccounting = "Não";
+            }
+            $spDeveloper = $linha['spDeveloper'];
+            if($spDeveloper == 1) {
+                $spDeveloper = "Sim";
+            } else {
+                $spDeveloper = "Não";
+            }
+            $spDesigner = $linha['spDesigner'];
+            if($spDesigner == 1) {
+                $spDesigner = "Sim";
+            } else {
+                $spDesigner = "Não";
+            }
+            $spFinancial = $linha['spFinancial'];
+            if($spFinancial == 1) {
+                $spFinancial = "Sim";
+            } else {
+                $spFinancial = "Não";
+            }
+            $spManagement = $linha['spManagement'];
+            if($spManagement == 1) {
+                $spManagement = "Sim";
+            } else {
+                $spManagement = "Não";
+            }
+            $spLegal = $linha['spLegal'];
+            if($spLegal == 1) {
+                $spLegal = "Sim";
+            } else {
+                $spLegal = "Não";
+            }
+            $spMarketing = $linha['spMarketing'];
+            if($spMarketing == 1) {
+                $spMarketing = "Sim";
+            } else {
+                $spMarketing = "Não";
+            }
+            $spOtherChecked = $linha['spOtherChecked'];
+            if($spOtherChecked == 1) {
+                $spOtherChecked = "Sim";
+            } else {
+                $spOtherChecked = "Não";
+            }
+
+            $spOther = $linha['spOther'];
+            
+            $stage = $linha['stage'];
+            $problem = $linha['problem'];
+            $solution = $linha['solution'];
+            $differential = $linha['differential'];
 
             $return[] = array(
                 'idStartup' => $id,
@@ -315,6 +443,193 @@ switch ($option) {
         echo json_encode($return);
 
         break;
+
+    case 'Get My Startup By IdStartup':
+
+        $idStartup = $_GET['idStartup'];
+
+        $getMyStartup=$pdo->prepare("SELECT *  FROM startup WHERE id=:idStartup");
+        $getMyStartup->bindValue(":idStartup", $idStartup);
+        $getMyStartup->execute();
+
+        while ($linha=$getMyStartup->fetch(PDO::FETCH_ASSOC)) {
+
+            $idStartup = $linha['id'];
+            $iduser = $linha['iduser'];
+            $nameStartup = $linha['nameStartup'];
+            $nameResponsable = $linha['nameResponsable'];
+            $description = $linha['description'];
+            $investment = $linha['needInvestment'];
+
+            if($investment == 1) {
+                $investment = "Sim";
+            } else {
+                $investment = "Não";
+            }
+            
+            $bpComercial = $linha['bpComercial'];
+            if($bpComercial == 1) {
+                $bpComercial = "Sim";
+            } else {
+                $bpComercial = "Não";
+            }
+            $bpAccounting = $linha['bpAccounting'];
+            if($bpAccounting == 1) {
+                $bpAccounting = "Sim";
+            } else {
+                $bpAccounting = "Não";
+            }
+            $bpDeveloper = $linha['bpDeveloper'];
+            if($bpDeveloper == 1) {
+                $bpDeveloper = "Sim";
+            } else {
+                $bpDeveloper = "Não";
+            }
+            $bpDesigner = $linha['bpDesigner'];
+            if($bpDesigner == 1) {
+                $bpDesigner = "Sim";
+            } else {
+                $bpDesigner = "Não";
+            }
+            $bpFinancial = $linha['bpFinancial'];
+            if($bpFinancial == 1) {
+                $bpFinancial = "Sim";
+            } else {
+                $bpFinancial = "Não";
+            }
+            $bpManagement = $linha['bpManagement'];
+            if($bpManagement == 1) {
+                $bpManagement = "Sim";
+            } else {
+                $bpManagement = "Não";
+            }
+            $bpLegal = $linha['bpLegal'];
+            if($bpLegal == 1) {
+                $bpLegal = "Sim";
+            } else {
+                $bpLegal = "Não";
+            }
+            $bpMarketing = $linha['bpMarketing'];
+            if($bpMarketing == 1) {
+                $bpMarketing = "Sim";
+            } else {
+                $bpMarketing = "Não";
+            }
+            $bpOtherChecked = $linha['bpOtherChecked'];
+            if($bpOtherChecked == 1) {
+                $bpOtherChecked = "Sim";
+            } else {
+                $bpOtherChecked = "Não";
+            }
+
+            $bpOther = $linha['bpOther'];
+
+            $spComercial = $linha['spComercial'];
+            if($spComercial == 1) {
+                $spComercial = "Sim";
+            } else {
+                $spComercial = "Não";
+            }
+            $spAccounting = $linha['spAccounting'];
+            if($spAccounting == 1) {
+                $spAccounting = "Sim";
+            } else {
+                $spAccounting = "Não";
+            }
+            $spDeveloper = $linha['spDeveloper'];
+            if($spDeveloper == 1) {
+                $spDeveloper = "Sim";
+            } else {
+                $spDeveloper = "Não";
+            }
+            $spDesigner = $linha['spDesigner'];
+            if($spDesigner == 1) {
+                $spDesigner = "Sim";
+            } else {
+                $spDesigner = "Não";
+            }
+            $spFinancial = $linha['spFinancial'];
+            if($spFinancial == 1) {
+                $spFinancial = "Sim";
+            } else {
+                $spFinancial = "Não";
+            }
+            $spManagement = $linha['spManagement'];
+            if($spManagement == 1) {
+                $spManagement = "Sim";
+            } else {
+                $spManagement = "Não";
+            }
+            $spLegal = $linha['spLegal'];
+            if($spLegal == 1) {
+                $spLegal = "Sim";
+            } else {
+                $spLegal = "Não";
+            }
+            $spMarketing = $linha['spMarketing'];
+            if($spMarketing == 1) {
+                $spMarketing = "Sim";
+            } else {
+                $spMarketing = "Não";
+            }
+            $spOtherChecked = $linha['spOtherChecked'];
+            if($spOtherChecked == 1) {
+                $spOtherChecked = "Sim";
+            } else {
+                $spOtherChecked = "Não";
+            }
+
+            $spOther = $linha['spOther'];
+            
+            $stage = $linha['stage'];
+            $problem = $linha['problem'];
+            $solution = $linha['solution'];
+            $differential = $linha['differential'];
+
+            $return = array(
+                'idStartup' => $idStartup,
+                'nameStartup' => $nameStartup,
+                'description' => $description,
+                'nameResponsable' => $nameResponsable,
+                'city' => $city,
+                'state' => $state,
+                'investment' => $investment,
+                'bpComercial' => $bpComercial,
+                'bpAccounting' => $bpAccounting,
+                'bpDeveloper' => $bpDeveloper,
+                'bpDesigner' => $bpDesigner,
+                'bpFinancial' => $bpFinancial,
+                'bpManagement' => $bpManagement,
+                'bpLegal' => $bpLegal,
+                'bpMarketing' => $bpMarketing,
+                'bpOtherChecked' => $bpOtherChecked,
+                'bpOther' => $bpOther,
+                'spComercial' => $spComercial,
+                'spAccounting' => $spAccounting,
+                'spDeveloper' => $spDeveloper,
+                'spDesigner' => $spDesigner,
+                'spFinancial' => $spFinancial,
+                'spManagement' => $spManagement,
+                'spLegal' => $spLegal,
+                'spMarketing' => $spMarketing,
+                'spOtherChecked' => $spOtherChecked,
+                'spOther' => $spOther,
+                'stage' => $stage,
+                'problem' => $problem,
+                'solution' => $solution,
+                'differential' => $differential
+            );
+
+        }
+
+        echo json_encode($return);
+
+        break;
+
+    default:
+        # code...
+        break;
+
     }
 
 ?>
