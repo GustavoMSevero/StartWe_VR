@@ -7,6 +7,7 @@ import ParticipantProfile from './Pages/ParticipantProfile'
 import Feed from './Pages/Feed'
 import EditUser from './Pages/EditUser'
 import MyStartups from './Pages/MyStartups'
+import MyStartup from './Pages/MyStartup'
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
     {
         path: "/minhas-startups/:iduser",
         element: <MyStartups />
+    },
+    {
+        path: "/startup/:idStartup",
+        element: <MyStartup />
     },
 ])
 
