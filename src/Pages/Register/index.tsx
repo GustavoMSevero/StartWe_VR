@@ -51,7 +51,7 @@ function Register() {
         event.preventDefault();
         input.option = "Register User";
         if(input.password == input.confirmPassword) {
-            axios.post("http://localhost:8888/web/react/startWe/php/apiUser.php", input).then(function(response) {
+            axios.post("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", input).then(function(response) {
                 // console.log(response.data)
                 if(response.data.status == 0) {
                     alert(response.data.msg)

@@ -152,7 +152,7 @@ function StartupProfile() {
         input.option = "Register Startup";
         input.iduser = Number(iduser);
         input.nameResponsable = username;
-        axios.post("http://localhost:8888/web/react/startWe/php/apiStartup.php", input).then(function(response) {
+        axios.post("http://localhost:8888/web/react/StartWe_VR/php/apiStartup.php", input).then(function(response) {
             // console.log(response.data)
             navigate("/feed");
         }).catch(function(error) {

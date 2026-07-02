@@ -36,7 +36,7 @@ function MyStartups() {
     const [myStartups, setMyStartups] = useState<Startups[]>([]);
 
     function getMyStartups() {
-        axios.get("http://localhost:8888/web/react/startWe/php/apiStartup.php", {
+        axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiStartup.php", {
             params: {
                 iduser: iduser,
                 option: "Get My Startups",

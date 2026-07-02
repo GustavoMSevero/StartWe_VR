@@ -80,7 +80,7 @@ function ParticipantProfile() {
     };
 
     function getUserData() {
-        axios.get("http://localhost:8888/web/react/startWe/php/apiUser.php", {
+        axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", {
             params: {
                 iduser: iduser,
                 option: "Get User Data"

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import avatarLogo from "../../assets/avatars/admin.png";
 
 import {
     Page,
@@ -9,11 +7,6 @@ import {
     Brand,
     HeaderTitle,
     Body,
-    Sidebar,
-    Avatar,
-    NavMenu,
-    NavItem,
-    NavText,
     MainContent,
     StartupCard,
     StartupLogo,
@@ -73,7 +66,7 @@ function Feed() {
     const [startups, setStartups] = useState<Startups[]>([]);
 
     function getStartups() {
-        axios.get("http://localhost:8888/web/react/startWe/php/apiStartup.php", {
+        axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiStartup.php", {
                 params: {
                     option: "Get Startup",
                 },

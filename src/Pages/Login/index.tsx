@@ -34,7 +34,7 @@ function Login() {
 
     function submit(event: React.FormEvent) {
         event.preventDefault();
-        axios.get("http://localhost:8888/web/react/startWe/php/apiUser.php", {
+        axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", {
             params: {
                 email: inputLogin.email,
                 password: inputLogin.password,
