@@ -300,140 +300,12 @@ switch ($option) {
 
         while ($linha=$getMyStartups->fetch(PDO::FETCH_ASSOC)) {
 
-            $$idStartup = $linha['id'];
-            $iduser = $linha['iduser'];
+            $idStartup = $linha['id'];
             $nameStartup = $linha['nameStartup'];
-            $nameResponsable = $linha['nameResponsable'];
             $description = $linha['description'];
-            $investment = $linha['needInvestment'];
-
-            if($investment == 1) {
-                $investment = "Sim";
-            } else {
-                $investment = "Não";
-            }
-            
-            $bpComercial = $linha['bpComercial'];
-            if($bpComercial == 1) {
-                $bpComercial = "Sim";
-            } else {
-                $bpComercial = "Não";
-            }
-            $bpAccounting = $linha['bpAccounting'];
-            if($bpAccounting == 1) {
-                $bpAccounting = "Sim";
-            } else {
-                $bpAccounting = "Não";
-            }
-            $bpDeveloper = $linha['bpDeveloper'];
-            if($bpDeveloper == 1) {
-                $bpDeveloper = "Sim";
-            } else {
-                $bpDeveloper = "Não";
-            }
-            $bpDesigner = $linha['bpDesigner'];
-            if($bpDesigner == 1) {
-                $bpDesigner = "Sim";
-            } else {
-                $bpDesigner = "Não";
-            }
-            $bpFinancial = $linha['bpFinancial'];
-            if($bpFinancial == 1) {
-                $bpFinancial = "Sim";
-            } else {
-                $bpFinancial = "Não";
-            }
-            $bpManagement = $linha['bpManagement'];
-            if($bpManagement == 1) {
-                $bpManagement = "Sim";
-            } else {
-                $bpManagement = "Não";
-            }
-            $bpLegal = $linha['bpLegal'];
-            if($bpLegal == 1) {
-                $bpLegal = "Sim";
-            } else {
-                $bpLegal = "Não";
-            }
-            $bpMarketing = $linha['bpMarketing'];
-            if($bpMarketing == 1) {
-                $bpMarketing = "Sim";
-            } else {
-                $bpMarketing = "Não";
-            }
-            $bpOtherChecked = $linha['bpOtherChecked'];
-            if($bpOtherChecked == 1) {
-                $bpOtherChecked = "Sim";
-            } else {
-                $bpOtherChecked = "Não";
-            }
-
-            $bpOther = $linha['bpOther'];
-
-            $spComercial = $linha['spComercial'];
-            if($spComercial == 1) {
-                $spComercial = "Sim";
-            } else {
-                $spComercial = "Não";
-            }
-            $spAccounting = $linha['spAccounting'];
-            if($spAccounting == 1) {
-                $spAccounting = "Sim";
-            } else {
-                $spAccounting = "Não";
-            }
-            $spDeveloper = $linha['spDeveloper'];
-            if($spDeveloper == 1) {
-                $spDeveloper = "Sim";
-            } else {
-                $spDeveloper = "Não";
-            }
-            $spDesigner = $linha['spDesigner'];
-            if($spDesigner == 1) {
-                $spDesigner = "Sim";
-            } else {
-                $spDesigner = "Não";
-            }
-            $spFinancial = $linha['spFinancial'];
-            if($spFinancial == 1) {
-                $spFinancial = "Sim";
-            } else {
-                $spFinancial = "Não";
-            }
-            $spManagement = $linha['spManagement'];
-            if($spManagement == 1) {
-                $spManagement = "Sim";
-            } else {
-                $spManagement = "Não";
-            }
-            $spLegal = $linha['spLegal'];
-            if($spLegal == 1) {
-                $spLegal = "Sim";
-            } else {
-                $spLegal = "Não";
-            }
-            $spMarketing = $linha['spMarketing'];
-            if($spMarketing == 1) {
-                $spMarketing = "Sim";
-            } else {
-                $spMarketing = "Não";
-            }
-            $spOtherChecked = $linha['spOtherChecked'];
-            if($spOtherChecked == 1) {
-                $spOtherChecked = "Sim";
-            } else {
-                $spOtherChecked = "Não";
-            }
-
-            $spOther = $linha['spOther'];
-            
-            $stage = $linha['stage'];
-            $problem = $linha['problem'];
-            $solution = $linha['solution'];
-            $differential = $linha['differential'];
 
             $return[] = array(
-                'idStartup' => $id,
+                'idStartup' => $idStartup,
                 'nameStartup' => $nameStartup,
                 'description' => $description
             );
@@ -459,6 +331,8 @@ switch ($option) {
             $nameStartup = $linha['nameStartup'];
             $nameResponsable = $linha['nameResponsable'];
             $description = $linha['description'];
+            $city = $linha['city'];
+            $state = $linha['state'];
             $investment = $linha['needInvestment'];
 
             if($investment == 1) {
