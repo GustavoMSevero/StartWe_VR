@@ -520,121 +520,121 @@ switch ($option) {
             $investment = $linha['needInvestment'];
 
             if($investment == 1) {
-                $investment = "true";
+                $investment = true;
             } else {
-                $investment = "false";
+                $investment = false;
             }
             
             $bpComercial = $linha['bpComercial'];
             if($bpComercial == 1) {
-                $bpComercial = "true";
+                $bpComercial = true;
             } else {
-                $bpComercial = "false";
+                $bpComercial = false;
             }
             $bpAccounting = $linha['bpAccounting'];
             if($bpAccounting == 1) {
-                $bpAccounting = "true";
+                $bpAccounting = true;
             } else {
-                $bpAccounting = "false";
+                $bpAccounting = false;
             }
             $bpDeveloper = $linha['bpDeveloper'];
             if($bpDeveloper == 1) {
-                $bpDeveloper = "true";
+                $bpDeveloper = true;
             } else {
-                $bpDeveloper = "false";
+                $bpDeveloper = false;
             }
             $bpDesigner = $linha['bpDesigner'];
             if($bpDesigner == 1) {
-                $bpDesigner = "true";
+                $bpDesigner = true;
             } else {
-                $bpDesigner = "false";
+                $bpDesigner = false;
             }
             $bpFinancial = $linha['bpFinancial'];
             if($bpFinancial == 1) {
-                $bpFinancial = "true";
+                $bpFinancial = true;
             } else {
-                $bpFinancial = "false";
+                $bpFinancial = false;
             }
             $bpManagement = $linha['bpManagement'];
             if($bpManagement == 1) {
-                $bpManagement = "true";
+                $bpManagement = true;
             } else {
-                $bpManagement = "false";
+                $bpManagement = false;
             }
             $bpLegal = $linha['bpLegal'];
             if($bpLegal == 1) {
-                $bpLegal = "true";
+                $bpLegal = true;
             } else {
-                $bpLegal = "false";
+                $bpLegal = false;
             }
             $bpMarketing = $linha['bpMarketing'];
             if($bpMarketing == 1) {
-                $bpMarketing = "true";
+                $bpMarketing = true;
             } else {
-                $bpMarketing = "false";
+                $bpMarketing = false;
             }
             $bpOtherChecked = $linha['bpOtherChecked'];
             if($bpOtherChecked == 1) {
-                $bpOtherChecked = "true";
+                $bpOtherChecked = true;
             } else {
-                $bpOtherChecked = "false";
+                $bpOtherChecked = false;
             }
 
             $bpOther = $linha['bpOther'];
 
             $spComercial = $linha['spComercial'];
             if($spComercial == 1) {
-                $spComercial = "true";
+                $spComercial = true;
             } else {
-                $spComercial = "false";
+                $spComercial = false;
             }
             $spAccounting = $linha['spAccounting'];
             if($spAccounting == 1) {
-                $spAccounting = "true";
+                $spAccounting = true;
             } else {
-                $spAccounting = "false";
+                $spAccounting = false;
             }
             $spDeveloper = $linha['spDeveloper'];
             if($spDeveloper == 1) {
-                $spDeveloper = "true";
+                $spDeveloper = true;
             } else {
-                $spDeveloper = "false";
+                $spDeveloper = false;
             }
             $spDesigner = $linha['spDesigner'];
             if($spDesigner == 1) {
-                $spDesigner = "true";
+                $spDesigner = true;
             } else {
-                $spDesigner = "false";
+                $spDesigner = false;
             }
             $spFinancial = $linha['spFinancial'];
             if($spFinancial == 1) {
-                $spFinancial = "true";
+                $spFinancial = true;
             } else {
-                $spFinancial = "false";
+                $spFinancial = false;
             }
             $spManagement = $linha['spManagement'];
             if($spManagement == 1) {
-                $spManagement = "true";
+                $spManagement = true;
             } else {
-                $spManagement = "false";
+                $spManagement = false;
             }
             $spLegal = $linha['spLegal'];
             if($spLegal == 1) {
-                $spLegal = "true";
+                $spLegal = true;
             } else {
-                $spLegal = "false";
+                $spLegal = false;
             }
             $spMarketing = $linha['spMarketing'];
             if($spMarketing == 1) {
-                $spMarketing = "true";
+                $spMarketing = true;
             } else {
-                $spMarketing = "false";
+                $spMarketing = false;
             }
             $spOtherChecked = $linha['spOtherChecked'];
             if($spOtherChecked == 1) {
-                $spOtherChecked = "true";
+                $spOtherChecked = true;
             } else {
-                $spOtherChecked = "false";
+                $spOtherChecked = false;
             }
 
             $spOther = $linha['spOther'];
