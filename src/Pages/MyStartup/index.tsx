@@ -11,8 +11,6 @@ import {
     Body,
     MainContent,
     StartupCard,
-    StartupLogo,
-    LogoIcon,
     InfoBlock,
     InfoLabel,
     InfoValue,
@@ -69,7 +67,6 @@ function MyStartup() {
                 },
             })
             .then(function (response) {
-                console.log(response.data);
                 const data = response.data;
             if (data && typeof data === 'object' && !Array.isArray(data)) {
                 setStartups(data);
@@ -200,7 +197,7 @@ function MyStartup() {
                                     <InfoValue>{startups.differential}</InfoValue>
                                 </InfoBlock>
                                 <div>
-                                    <Link to={`/editar-startup/${startups.idStartup}/edit`}>Editar Startup</Link>
+                                    <Link to={`/editar-startup/${startups.idStartup}`}>Editar Startup</Link>
                                 </div>
                             </div>
                         )}      
