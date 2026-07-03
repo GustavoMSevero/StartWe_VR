@@ -8,6 +8,7 @@ import Feed from './Pages/Feed'
 import EditUser from './Pages/EditUser'
 import MyStartups from './Pages/MyStartups'
 import MyStartup from './Pages/MyStartup'
+import EditStartup from './Pages/EditStartup'
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     {
         path: "/startup/:idStartup",
         element: <MyStartup />
+    },
+    {
+        path: "/editar-startup/:idStartup",
+        element: <EditStartup />
     },
 ])
 
