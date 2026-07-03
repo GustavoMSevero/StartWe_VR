@@ -43,7 +43,7 @@ function EditUser() {
     });
 
     function getUserDataToEdit() {
-        axios.get("http://localhost:8888/web/react/startWe/php/apiUser.php", {
+        axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", {
             params: {
                 iduser: iduser,
                 option: "Get User Data To Edit",
@@ -69,7 +69,7 @@ function EditUser() {
         event.preventDefault();
         input.option = "Update User Data";
         input.id = parseInt(iduser ?? "0");
-        axios.post("http://localhost:8888/web/react/startWe/php/apiUser.php", input).then(function(response) {
+        axios.post("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", input).then(function(response) {
             if(response.data.status == 1) {
                 alert(response.data.msg)
             }
