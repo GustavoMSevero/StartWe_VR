@@ -207,13 +207,6 @@ function EditStartup() {
         setInput((values) => ({ ...values, [name]: checked }));
     }
 
-    function toggleField(
-        field: "needInvestment" | "businessPartnerOtherChecked" | "serviceOtherChecked",
-        checked: boolean
-    ) {
-        setInput((values) => ({ ...values, [field]: checked }));
-    }
-
     function submit(event: React.FormEvent) {
         event.preventDefault();
         input.option = "Update Startup";
@@ -232,7 +225,7 @@ function EditStartup() {
         <Page>
             <TopHeader>
                 <Brand>StartUs</Brand>
-                <HeaderTitle>Perfil Startup</HeaderTitle>
+                <HeaderTitle>Editar Startup</HeaderTitle>
             </TopHeader>
 
             <Body>
@@ -308,7 +301,8 @@ function EditStartup() {
                             <CheckboxItem>
                                 <input
                                     type="checkbox"
-                                    checked={input?.investment}
+                                    name="investment"
+                                    checked={!!input?.investment}
                                     onChange={handleCheckboxChange}
                                 />
                                 Investimento
@@ -319,31 +313,49 @@ function EditStartup() {
                             <SectionLabel>Parceiros de negócio</SectionLabel>
                             <CheckboxGroup>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpComercial" checked={!!input?.bpComercial} onChange={handleCheckboxChange} />Comercial
+                                    <input type="checkbox" name="bpComercial" 
+                                    checked={!!input?.bpComercial} 
+                                    onChange={handleCheckboxChange} />Comercial
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpAccounting" checked={!!input?.bpAccounting} onChange={handleCheckboxChange} />Contábil
+                                    <input type="checkbox" name="bpAccounting" 
+                                    checked={!!input?.bpAccounting} 
+                                    onChange={handleCheckboxChange} />Contábil
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpDeveloper" checked={!!input?.bpDeveloper} onChange={handleCheckboxChange} />Desenvolvedor
+                                    <input type="checkbox" name="bpDeveloper" 
+                                    checked={!!input?.bpDeveloper} 
+                                    onChange={handleCheckboxChange} />Desenvolvedor
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpDesigner" checked={!!input?.bpDesigner} onChange={handleCheckboxChange} />Designer
+                                    <input type="checkbox" name="bpDesigner" 
+                                    checked={!!input?.bpDesigner} 
+                                    onChange={handleCheckboxChange} />Designer
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpFinancial" checked={!!input?.bpFinancial} onChange={handleCheckboxChange} />Financeiro
+                                    <input type="checkbox" name="bpFinancial" 
+                                    checked={!!input?.bpFinancial} 
+                                    onChange={handleCheckboxChange} />Financeiro
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpManagement" checked={!!input?.bpManagement} onChange={handleCheckboxChange} />Gestão
+                                    <input type="checkbox" name="bpManagement" 
+                                    checked={!!input?.bpManagement} 
+                                    onChange={handleCheckboxChange} />Gestão
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpLegal" checked={!!input?.bpLegal} onChange={handleCheckboxChange} />Jurídico
+                                    <input type="checkbox" name="bpLegal" 
+                                    checked={!!input?.bpLegal} 
+                                    onChange={handleCheckboxChange} />Jurídico
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpMarketing" checked={!!input?.bpMarketing} onChange={handleCheckboxChange} />Marketing
+                                    <input type="checkbox" name="bpMarketing" 
+                                    checked={!!input?.bpMarketing}
+                                    onChange={handleCheckboxChange} />Marketing
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="bpOtherChecked" checked={!!input?.bpOtherChecked} onChange={handleCheckboxChange} />Outro
+                                    <input type="checkbox" name="bpOtherChecked" 
+                                    checked={!!input?.bpOtherChecked}
+                                    onChange={handleCheckboxChange} />Outro
                                 </CheckboxItem>
                                 <OtherField>
                                     <OtherInput type="text" name="bpOther" value={input?.bpOther ?? ""} onChange={change} />
@@ -352,31 +364,49 @@ function EditStartup() {
                             <SectionLabel>Prestação de serviço</SectionLabel> 
                             <CheckboxGroup>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spComercial" checked={!!input?.spComercial} onChange={handleCheckboxChange} />Comercial
+                                    <input type="checkbox" name="spComercial" 
+                                    checked={!!input?.spComercial} 
+                                    onChange={handleCheckboxChange} />Comercial
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spAccounting" checked={!!input?.spAccounting} onChange={handleCheckboxChange} />Contábil
+                                    <input type="checkbox" name="spAccounting" 
+                                    checked={!!input?.spAccounting} 
+                                    onChange={handleCheckboxChange} />Contábil
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spDeveloper" checked={!!input?.spDeveloper} onChange={handleCheckboxChange} />Desenvolvedor
+                                    <input type="checkbox" name="spDeveloper" 
+                                    checked={!!input?.spDeveloper} 
+                                    onChange={handleCheckboxChange} />Desenvolvedor
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spDesigner" checked={!!input?.spDesigner} onChange={handleCheckboxChange} />Designer
+                                    <input type="checkbox" name="spDesigner" 
+                                    checked={!!input?.spDesigner} 
+                                    onChange={handleCheckboxChange} />Designer
                                 </CheckboxItem>
                                 <CheckboxItem>                        
-                                    <input type="checkbox" name="spFinancial" checked={!!input?.spFinancial} onChange={handleCheckboxChange} />Financeiro
+                                    <input type="checkbox" name="spFinancial" 
+                                    checked={!!input?.spFinancial} 
+                                    onChange={handleCheckboxChange} />Financeiro
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spManagement" checked={!!input?.spManagement} onChange={handleCheckboxChange} />Gestão
+                                    <input type="checkbox" name="spManagement" 
+                                    checked={!!input?.spManagement} 
+                                    onChange={handleCheckboxChange} />Gestão
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spLegal" checked={!!input?.spLegal} onChange={handleCheckboxChange} />Jurídico
+                                    <input type="checkbox" name="spLegal" 
+                                    checked={!!input?.spLegal} 
+                                    onChange={handleCheckboxChange} />Jurídico
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spMarketing" checked={!!input?.spMarketing} onChange={handleCheckboxChange} />Marketing
+                                    <input type="checkbox" name="spMarketing" 
+                                    checked={!!input?.spMarketing}
+                                    onChange={handleCheckboxChange} />Marketing
                                 </CheckboxItem>
                                 <CheckboxItem>
-                                    <input type="checkbox" name="spOtherChecked" checked={!!input?.spOtherChecked} onChange={handleCheckboxChange} />Outro
+                                    <input type="checkbox" name="spOtherChecked" 
+                                    checked={!!input?.spOtherChecked}
+                                    onChange={handleCheckboxChange} />Outro
                                 </CheckboxItem>
                                 <OtherField>
                                     <OtherInput type="text" name="spOther" value={input?.spOther ?? ""} onChange={change} />
