@@ -156,11 +156,18 @@ switch ($option) {
             $city = $linha['city'];
             $email = $linha['email'];
             $user = $linha['user'];
+            $cpf = $linha['cpf'];
+            $dateBirth = $linha['dateBirth'];
+
+            $dateBirthP = explode("-", $dateBirth);
+            $dateBirth = $dateBirthP[2] . "/" . $dateBirthP[1] . "/" . $dateBirthP[0];
 
             $return = array(
                 'city' => $city,
                 'email' => $email,
-                'username' => $user
+                'username' => $user,
+                'cpf' => $cpf,
+                'dateBirth' => $dateBirth
             );
         }
 
@@ -170,16 +177,24 @@ switch ($option) {
 
     case 'Update User Data':
 
-        $id = $data->id;
+        // print_r($data);
+        $iduser = $data->iduser;
         $city = $data->city;
         $email = $data->email;
         $username = $data->username;
+        $cpf = $data->cpf;
+        $dateBirth = $data->dateBirth;
 
-        $updateUser=$pdo->prepare("UPDATE users SET city=:city, email=:email, user=:user WHERE id=:id");
+        $dateBirthP = explode("/", $dateBirth);
+        $dateBirth = $dateBirthP[2] . "-" . $dateBirthP[1] . "-" . $dateBirthP[0];
+
+        $updateUser=$pdo->prepare("UPDATE users SET city=:city, email=:email, user=:user, cpf=:cpf, dateBirth=:dateBirth WHERE id=:id");
         $updateUser->bindValue(":city", $city);
         $updateUser->bindValue(":email", $email);
         $updateUser->bindValue(":user", $username);
-        $updateUser->bindValue(":id", $id);
+        $updateUser->bindValue(":cpf", $cpf);
+        $updateUser->bindValue(":dateBirth", $dateBirth);
+        $updateUser->bindValue(":id", $iduser);
         $updateUser->execute();
 
         $status = 1;
