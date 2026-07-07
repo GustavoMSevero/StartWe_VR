@@ -4,11 +4,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 type inputObject = {
-    id: number;
+    iduser: number;
     city: string;
     username: string;
     email: string;
+    cpf: string;
+    sex: string;
+    dateBirth: string;
     option: string;
+    photo: File | null;
+    photoPreview: string;
 }
 
 import { Page, 
@@ -35,11 +40,16 @@ function EditUser() {
     const { iduser } = useParams();
 
     const [input, setInput] = useState<inputObject>({
-        id: 0,
+        iduser: 0,
         city: "",
         username: "",
         email: "",
-        option: ""
+        cpf: "",
+        sex: "",
+        dateBirth: "",
+        option: "",
+        photo: null as File | null,        // ← novo
+        photoPreview: '' as string,
     });
 
     function getUserDataToEdit() {
@@ -49,10 +59,16 @@ function EditUser() {
                 option: "Get User Data To Edit",
             },
         })
-        .then(function(response) {
-            setInput(response.data)
-            localStorage.setItem("username", response.data.username);
+        .then((response) => {
+            const data = response.data;
+            setInput({
+                ...data,
+                photo: null,           // não vem arquivo do backend
+                photoPreview: data.photo_url || '', // ajuste conforme o que sua API retorna
+            });
+            localStorage.setItem("username", data.username);
         })
+        .catch(err => console.error(err));
     }
 
     useEffect(() => {
@@ -60,22 +76,23 @@ function EditUser() {
     }, [])
 
     function change(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-        const name = (event.target as HTMLInputElement).name;
-        const value = (event.target as HTMLInputElement).value;
+        const { name, value } = event.target;
         setInput((values) => ({ ...values, [name]: value }));
     }
 
     function submit(event: React.FormEvent) {
         event.preventDefault();
         input.option = "Update User Data";
-        input.id = parseInt(iduser ?? "0");
+        input.iduser = parseInt(iduser ?? "0");
         axios.post("http://localhost:8888/web/react/StartWe_VR/php/apiUser.php", input).then(function(response) {
             if(response.data.status == 1) {
                 alert(response.data.msg)
             }
+            localStorage.setItem("username", response.data.username);
             navigate("/feed")
         })
     }
+    
     
     return (
         <Page>
@@ -90,6 +107,18 @@ function EditUser() {
                 <MainContent>
                     <StartupCard>
                     <FormRegister onSubmit={submit}>
+                    <FormRow $twoColumns>
+                        <FormField>
+                            <label htmlFor="inputCPF">CPF</label>
+                            <FormInput id="inputCPF" type="text" value={input.cpf} name="cpf" onChange={change} />
+                        </FormField>
+                    </FormRow>
+                    <FormRow $twoColumns>
+                        <FormField>
+                            <label htmlFor="inputDateBirth">Data de Nascimento</label>
+                            <FormInput id="inputDateBirth" type="text" value={input.dateBirth} name="dateBirth" onChange={change} />
+                        </FormField>
+                    </FormRow>
                     <FormRow $twoColumns>
                         <FormField>
                             <label htmlFor="inputCity">Cidade</label>
@@ -110,8 +139,6 @@ function EditUser() {
                             <FormInput id="inputName" type="text" value={input.username} name="username" onChange={change} />
                         </FormField>
                     </FormRow>
-
-                    
 
                     <FormActions>
                         <ButtonUpdate type="submit">Atualizar</ButtonUpdate>
