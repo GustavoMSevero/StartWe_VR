@@ -1,37 +1,64 @@
-import { Link, useNavigate } from "react-router-dom";
+    import { useEffect, useState } from "react";
+    import { Link, useNavigate } from "react-router-dom";
+    import axios from "axios";
 
-import avatarLogo from "../../assets/avatars/admin.png";
+    import avatarLogo from "../../assets/avatars/admin.png";
 
-import { Sidebar, Avatar, NavMenu, NavText, NavItem } from "./styles";
+    import { Sidebar, Avatar, NavMenu, NavText, NavItem } from "./styles";
 
-function Card() {
-    const navigate = useNavigate();
-    
-    const iduser = localStorage.getItem("iduser") ?? "";
-    const username = localStorage.getItem("username") ?? "";
+    function Card() {
+        const navigate = useNavigate();
+        
+        const iduser = localStorage.getItem("iduser") ?? "";
+        const username = localStorage.getItem("username") ?? "";
 
-    function logout() {
-        localStorage.removeItem("iduser");
-        localStorage.removeItem("username");
-        navigate("/");
+        const [photo, setPhoto] = useState<string | null>(null);
+
+        function logout() {
+            localStorage.removeItem("iduser");
+            localStorage.removeItem("username");
+            navigate("/");
+        }
+
+        function getPhoto() {
+            axios.get("http://localhost:8888/web/react/StartWe_VR/php/getPhotoUser.php", {
+                params: {
+                    iduser: iduser,
+                    option: "Get Photo",
+                },
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                setPhoto(response.data.filename);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+        }
+
+        useEffect(() => {
+            getPhoto();
+        }, []);
+
+        return (
+            <Sidebar>
+                <Avatar>
+                    {photo ? <img src={photo} alt="Avatar" width={72} height={72} /> : <img src={avatarLogo} alt="Avatar" width={72} height={72} />}
+                </Avatar>
+                <NavMenu>
+                <Link id="link" to="/feed">Startups</Link>
+                <Link id="link" to={`/editar-usuario/${iduser}`}>Perfil usuário</Link>
+                <Link id="link" to={`/imagem-usuario/${iduser}`}>Foto usuário</Link>
+                    <NavText>Nome: {username || "—"}</NavText>
+                    <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
+                    <Link id="link" to={`/minhas-startups/${iduser}`}>Minhas Startups</Link>
+                    <NavText>Notificações:</NavText>
+                    <NavItem type="button" onClick={logout}>
+                        Sair
+                    </NavItem>
+                </NavMenu>
+            </Sidebar>
+        )
     }
 
-    return (
-        <Sidebar>
-            <Avatar><img src={avatarLogo} alt="Avatar" width={72} height={72} /></Avatar>
-            <NavMenu>
-            <Link id="link" to="/feed">Startups</Link>
-            <Link id="link" to={`/editar-usuario/${iduser}`}>Perfil usuário</Link>
-                <NavText>Nome: {username || "—"}</NavText>
-                <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
-                <Link id="link" to={`/minhas-startups/${iduser}`}>Minhas Startups</Link>
-                <NavText>Notificações:</NavText>
-                <NavItem type="button" onClick={logout}>
-                    Sair
-                </NavItem>
-            </NavMenu>
-        </Sidebar>
-    )
-}
-
-export default Card;
+    export default Card;
