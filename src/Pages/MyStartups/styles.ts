@@ -46,6 +46,7 @@ export const InfoStartup = styled.div`
 export const NameStartup = styled.div`
     width: 150px;
     background-color:rgba(240, 240, 240, 0.85);
+    border-radius: 10px;
     color: #1a1a1a;
     font-size: 14px;
     font-weight: 700;
@@ -58,6 +59,7 @@ export const NameStartup = styled.div`
 export const DescriptionStartup = styled.div`
     width: 150px;
     background-color:rgba(240, 240, 240, 0.85);
+    border-radius: 10px;
     margin-left: 10px;
     color: #1a1a1a;
     font-size: 14px;
