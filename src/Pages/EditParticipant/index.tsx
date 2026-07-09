@@ -33,7 +33,7 @@ import { Page,
 import Card from "../../components/Card";
 
 
-function EditUser() {
+function EditParticipant() {
     const navigate = useNavigate();
 
     const { idparticipant } = useParams();
@@ -154,4 +154,4 @@ function EditUser() {
     )
 }
 
-export default EditUser;
+export default EditParticipant;
