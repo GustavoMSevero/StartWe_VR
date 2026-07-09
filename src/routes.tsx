@@ -10,6 +10,7 @@ import MyStartups from './Pages/MyStartups'
 import MyStartup from './Pages/MyStartup'
 import EditStartup from './Pages/EditStartup'
 import PhotoUser from './Pages/PhotoUser'
+import EditParticipant from './Pages/EditParticipant'
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     {
         path: "/imagem-usuario/:iduser",
         element: <PhotoUser />
+    },
+    {
+        path: "/editar-participante/:idparticipant",
+        element: <EditParticipant />
     },
 ])
 
