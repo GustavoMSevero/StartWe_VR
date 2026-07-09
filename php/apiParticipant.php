@@ -78,7 +78,74 @@ switch ($option) {
         }
 
         break;
-    
+
+    case 'Get Participant Data To Edit':
+
+        $idparticipant = $_GET['idparticipant'];
+
+        $getParticipantDataToEdit=$pdo->prepare("SELECT * FROM participantProfile WHERE id=:idparticipant");
+        $getParticipantDataToEdit->bindValue("idparticipant", $idparticipant);
+        $getParticipantDataToEdit->execute();
+        
+        while ($linha=$getParticipantDataToEdit->fetch(PDO::FETCH_ASSOC)) {
+
+            $id = $linha['id'];
+            $profession = $linha['profession'];
+            $about = $linha['about'];
+            $cep = $linha['cep'];
+            $address = $linha['address'];
+            $city = $linha['city'];
+            $uf = $linha['uf'];
+            $linkedin = $linha['urlLinkedin'];
+
+            $return = array(
+                'id'	=> $id,
+                'profession'	=> $profession,
+                'about'	=> $about,
+                'cep'	=> $cep,
+                'address'	=> $address,
+                'city'	=> $city,
+                'uf'	=> $uf,
+                'linkedin'	=> $linkedin
+            );
+
+        }
+
+        echo json_encode($return);
+
+        break;
+
+    case 'Update Participant Data':
+
+        $id = $data->id;
+        $profession = $data->profession;
+        $about = $data->about;
+        $cep = $data->cep;
+        $address = $data->address;
+        $city = $data->city;
+        $uf = $data->uf;
+        $linkedin = $data->linkedin;
+
+        $updateParticipantData=$pdo->prepare("UPDATE participantProfile SET profession=:profession, about=:about, cep=:cep, address=:address, city=:city, uf=:uf, urlLinkedin=:linkedin WHERE id=:id");
+        $updateParticipantData->bindValue("profession", $profession);
+        $updateParticipantData->bindValue("about", $about);
+        $updateParticipantData->bindValue("cep", $cep);
+        $updateParticipantData->bindValue("address", $address);
+        $updateParticipantData->bindValue("city", $city);
+        $updateParticipantData->bindValue("uf", $uf);
+        $updateParticipantData->bindValue("linkedin", $linkedin);
+        $updateParticipantData->bindValue("id", $id);
+        $updateParticipantData->execute();
+
+        $return = array(
+            'status'	=> 1,
+            'msg'	=> 'Dados atualizados com sucesso'
+        );
+
+        echo json_encode($return);
+
+        break;
+
     default:
         # code...
         break;
