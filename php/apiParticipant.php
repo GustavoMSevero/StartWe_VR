@@ -46,6 +46,38 @@ switch ($option) {
         $insertParticipantData->execute();
 
         break;
+
+    case 'Get Id Participant':
+
+        $iduser = $_GET['iduser'];
+
+        $getIdParticipant=$pdo->prepare("SELECT id FROM participantProfile WHERE iduser=:iduser");
+        $getIdParticipant->bindValue("iduser", $iduser);
+        $getIdParticipant->execute();
+
+        $rowCount = $getIdParticipant->rowCount();
+
+        if($rowCount > 0) {
+
+            while ($linha=$getIdParticipant->fetch(PDO::FETCH_ASSOC)) {
+
+                $id = $linha['id'];
+    
+                $return = array(
+                    'id'	=> $id
+                );
+    
+            }
+    
+            echo json_encode($return);
+        } else {
+            $return = array(
+                'id'	=> 0
+            );
+            echo json_encode($return);
+        }
+
+        break;
     
     default:
         # code...
