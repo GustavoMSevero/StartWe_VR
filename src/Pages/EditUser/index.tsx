@@ -61,11 +61,7 @@ function EditUser() {
         })
         .then((response) => {
             const data = response.data;
-            setInput({
-                ...data,
-                photo: null,           // não vem arquivo do backend
-                photoPreview: data.photo_url || '', // ajuste conforme o que sua API retorna
-            });
+            setInput({...data});
             localStorage.setItem("username", data.username);
         })
         .catch(err => console.error(err));
