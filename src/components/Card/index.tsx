@@ -12,6 +12,8 @@
         const iduser = localStorage.getItem("iduser") ?? "";
         const username = localStorage.getItem("username") ?? "";
 
+        const [idParticipant, setIdParticipant] = useState<number | null>(null);
+
         const [photo, setPhoto] = useState<string | null>(null);
 
         function logout() {
@@ -36,8 +38,25 @@
             });
         }
 
+        function getIdParticipant() {
+            axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiParticipant.php", {
+                params: {
+                    iduser: Number(iduser),
+                    option: "Get Id Participant",
+                },
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                setIdParticipant(response.data.id);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+        }
+
         useEffect(() => {
             getPhoto();
+            getIdParticipant();
         }, []);
 
         return (
@@ -49,6 +68,7 @@
                 <Link id="link" to="/feed">Startups</Link>
                 <Link id="link" to={`/editar-usuario/${iduser}`}>Perfil usuário</Link>
                 <Link id="link" to={`/imagem-usuario/${iduser}`}>Foto usuário</Link>
+                {idParticipant ? <Link id="link" to={`/editar-participante/${idParticipant}`}>Perfil participante</Link> : <></>}
                     <NavText>Nome: {username || "—"}</NavText>
                     <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
                     <Link id="link" to={`/minhas-startups/${iduser}`}>Minhas Startups</Link>
