@@ -88,9 +88,25 @@ switch ($option) {
 
         echo json_encode($return);
 
-
-
         break;
+
+    case 'Get Messages':
+
+        $username = $_GET['username'];
+        $iduser = $_GET['iduser'];
+
+        $getMessages=$pdo->prepare("SELECT * FROM message WHERE userTo =:username AND idTo =:iduser AND messageRead = 1");
+        $getMessages->bindValue(":username", $username);
+        $getMessages->bindValue(":iduser", $iduser);
+        $getMessages->execute();
+
+        $countMessages = $getMessages->rowCount();
+
+        $return = array(
+            'countMessages' => $countMessages
+        );
+
+        echo json_encode($return);
 
     default:
         # code...
