@@ -90,7 +90,7 @@ switch ($option) {
 
         break;
 
-    case 'Get Messages':
+    case 'Get Number Of Messages':
 
         $username = $_GET['username'];
         $iduser = $_GET['iduser'];
@@ -107,6 +107,52 @@ switch ($option) {
         );
 
         echo json_encode($return);
+
+        break;
+
+    case 'Get Message':
+
+        $username = $_GET['username'];
+        $iduser = $_GET['iduser'];
+
+        $messageRead = 0;
+
+        $getMessageToRead=$pdo->prepare("SELECT * FROM message WHERE userTo=:username AND idTo=:iduser");
+        $getMessageToRead->bindValue(":username", $username);
+        $getMessageToRead->bindValue(":iduser", $iduser);
+        $getMessageToRead->execute();
+
+        $setMessageToRead=$pdo->prepare("UPDATE message SET messageRead =:messageRead WHERE userTo=:username AND idTo=:iduser");
+        $setMessageToRead->bindValue(":username", $username);
+        $setMessageToRead->bindValue(":iduser", $iduser);
+        $setMessageToRead->bindValue(":messageRead", $messageRead);
+        $setMessageToRead->execute();
+
+        while ($linha=$getMessageToRead->fetch(PDO::FETCH_ASSOC)) {
+            $id = $linha['id'];
+            $idFrom = $linha['idFrom'];
+            $idTo = $linha['idTo'];
+            $userFrom = $linha['userFrom'];
+            $userTo = $linha['userTo'];
+            $emailFrom = $linha['emailFrom'];
+            $emailTo = $linha['emailTo'];
+            $message = $linha['message'];
+
+            $return[] = array(
+                'id' => $id,
+                'idFrom' => $idFrom,
+                'idTo' => $idTo,
+                'userFrom' => $userFrom,
+                'userTo' => $userTo,
+                'emailFrom' => $emailFrom,
+                'emailTo' => $emailTo,
+                'message' => $message
+            );
+        }
+
+        echo json_encode($return);
+
+        break;
 
     default:
         # code...
