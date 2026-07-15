@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import Card from "../../components/Card";
 
 import {
     Page,
@@ -22,7 +25,7 @@ import {
     ParticipateButton,
     Pagination,
 } from "./styles";
-import Card from "../../components/Card";
+
 
 type Startups = {
     idStartup: number;
@@ -60,6 +63,8 @@ type Startups = {
 const ITEMS_PER_PAGE = 10; // <-- quantas cidades por página (alterar aqui se quiser)
 
 function Feed() {
+
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -220,8 +225,8 @@ function Feed() {
                                           <InfoValue>{startup.differential}</InfoValue>
                                       </InfoBlock>
 
-                                      <ParticipateButton type="button">
-                                          Participar
+                                      <ParticipateButton type="button" onClick={() => navigate(`/enviar-mensagem/${startup.idStartup}`)}>
+                                          Entrar em Contato
                                       </ParticipateButton>
                                   </div>
                               ))
