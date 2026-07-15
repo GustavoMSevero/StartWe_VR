@@ -45,7 +45,7 @@
                 params: {
                     username: username,
                     iduser: Number(iduser),
-                    option: "Get Messages",
+                    option: "Get Number Of Messages",
                 },
             })
             .then(function (response) {
