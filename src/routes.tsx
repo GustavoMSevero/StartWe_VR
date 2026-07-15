@@ -12,6 +12,7 @@ import EditStartup from './Pages/EditStartup'
 import PhotoUser from './Pages/PhotoUser'
 import EditParticipant from './Pages/EditParticipant'
 import SendMessage from './Pages/SendMessage'
+import ReceiveMessage from './Pages/ReceiveMessage'
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
     {
         path: "/enviar-mensagem/:idStartup",
         element: <SendMessage />
+    },
+    {
+        path: "/ver-mensagens/:iduser",
+        element: <ReceiveMessage />
     },
 ])
 
