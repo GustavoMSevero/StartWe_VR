@@ -12,6 +12,8 @@
         const iduser = localStorage.getItem("iduser") ?? "";
         const username = localStorage.getItem("username") ?? "";
 
+        const [numberMessages, setNumberMessages] = useState<number | null>(null);
+
         const [idParticipant, setIdParticipant] = useState<number | null>(null);
 
         const [photo, setPhoto] = useState<string | null>(null);
@@ -38,6 +40,23 @@
             });
         }
 
+        function getMessages() {
+            axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiMessage.php", {
+                params: {
+                    username: username,
+                    iduser: Number(iduser),
+                    option: "Get Messages",
+                },
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                setNumberMessages(response.data.countMessages);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+        }
+
         function getIdParticipant() {
             axios.get("http://localhost:8888/web/react/StartWe_VR/php/apiParticipant.php", {
                 params: {
@@ -57,6 +76,7 @@
         useEffect(() => {
             getPhoto();
             getIdParticipant();
+            getMessages();
         }, []);
 
         return (
@@ -72,7 +92,8 @@
                     <NavText>Nome: {username || "—"}</NavText>
                     <Link id="link" to="/perfil-startup">Criar nova Startup</Link>
                     <Link id="link" to={`/minhas-startups/${iduser}`}>Minhas Startups</Link>
-                    <NavText>Notificações:</NavText>
+                    <NavText>Mensagens: {numberMessages ? numberMessages : 0}</NavText>
+                    <Link id="link" to={`/ver-mensagens/${iduser}`}>Ver Mensagens</Link>
                     <NavItem type="button" onClick={logout}>
                         Sair
                     </NavItem>
