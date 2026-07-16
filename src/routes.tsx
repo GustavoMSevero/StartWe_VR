@@ -13,6 +13,7 @@ import PhotoUser from './Pages/PhotoUser'
 import EditParticipant from './Pages/EditParticipant'
 import SendMessage from './Pages/SendMessage'
 import ReceiveMessage from './Pages/ReceiveMessage'
+import ReadMessage from './Pages/ReadMessage'
 
 const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
     {
         path: "/ver-mensagens/:iduser",
         element: <ReceiveMessage />
+    },
+    {
+        path: "/ler-mensagem/:id",
+        element: <ReadMessage />
     },
 ])
 
