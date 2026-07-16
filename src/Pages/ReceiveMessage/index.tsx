@@ -5,14 +5,9 @@ import Card from "../../components/Card";
 
 type Messages = {
     id: number;
-    idFrom: number;
-    idTo: number;
     userFrom: string;
     userTo: string;
-    emailFrom: string;
-    emailTo: string;
     message: string;
-    messageRead: number;
 };
 
 import { 
@@ -50,7 +45,7 @@ function ReceiveMessage() {
             params: {
                 username: username,
                 iduser: Number(iduser),
-                option: "Get Message",
+                option: "Get Messages",
             },
         })
         .then(function(response) {
@@ -87,7 +82,7 @@ function ReceiveMessage() {
             <Page>
                 <TopHeader>
                     <Brand>StartUs</Brand>
-                    <HeaderTitle>Minhas Startups</HeaderTitle>
+                    <HeaderTitle>Minhas Mensagens</HeaderTitle>
                 </TopHeader>
 
                 <Body>
@@ -107,14 +102,8 @@ function ReceiveMessage() {
                                     <StartupName>{message.userFrom}</StartupName>
                                     <StartupDescription>{message.userTo}</StartupDescription>
                                     <StartupLink>{message.message}</StartupLink>
-                                    <StartupLink><Link to={`/message/${message.id}`}>Ver</Link></StartupLink>
+                                    <StartupLink><Link to={`/ler-mensagem/${message.id}`}>Ver mensagem</Link></StartupLink>
                                 </DataStartup>
-                                
-                                {/* <form>
-                                    <RespondMessage name="respondMessage" cols={30} rows={10}></RespondMessage>
-                                    <br />
-                                    <SendMessage type="submit">Responder</SendMessage>
-                                </form> */}
                             </div>
                         ))
                     ) : null}
