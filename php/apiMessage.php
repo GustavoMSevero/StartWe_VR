@@ -110,24 +110,49 @@ switch ($option) {
 
         break;
 
-    case 'Get Message':
+    case 'Get Messages':
 
         $username = $_GET['username'];
         $iduser = $_GET['iduser'];
-
-        $messageRead = 0;
 
         $getMessageToRead=$pdo->prepare("SELECT * FROM message WHERE userTo=:username AND idTo=:iduser");
         $getMessageToRead->bindValue(":username", $username);
         $getMessageToRead->bindValue(":iduser", $iduser);
         $getMessageToRead->execute();
 
-        $setMessageToRead=$pdo->prepare("UPDATE message SET messageRead =:messageRead WHERE userTo=:username AND idTo=:iduser");
-        $setMessageToRead->bindValue(":username", $username);
-        $setMessageToRead->bindValue(":iduser", $iduser);
+        while ($linha=$getMessageToRead->fetch(PDO::FETCH_ASSOC)) {
+            $id = $linha['id'];
+            $userFrom = $linha['userFrom'];
+            $userTo = $linha['userTo'];
+            $message = $linha['message'];
+
+            $return[] = array(
+                'id' => $id,
+                'userFrom' => $userFrom,
+                'userTo' => $userTo,
+                'message' => $message
+            );
+        }
+
+        echo json_encode($return);
+
+        break;
+
+    case 'Get Message To Read':
+
+        $id = $_GET['id'];
+
+        $messageRead = 0;
+
+        $getMessageToRead=$pdo->prepare("SELECT * FROM message WHERE id=:id");
+        $getMessageToRead->bindValue(":id", $id);
+        $getMessageToRead->execute();
+
+        $setMessageToRead=$pdo->prepare("UPDATE message SET messageRead =:messageRead WHERE id=:id");
+        $setMessageToRead->bindValue(":id", $id);
         $setMessageToRead->bindValue(":messageRead", $messageRead);
         $setMessageToRead->execute();
-
+        
         while ($linha=$getMessageToRead->fetch(PDO::FETCH_ASSOC)) {
             $id = $linha['id'];
             $idFrom = $linha['idFrom'];
@@ -138,7 +163,7 @@ switch ($option) {
             $emailTo = $linha['emailTo'];
             $message = $linha['message'];
 
-            $return[] = array(
+            $return = array(
                 'id' => $id,
                 'idFrom' => $idFrom,
                 'idTo' => $idTo,
@@ -149,6 +174,38 @@ switch ($option) {
                 'message' => $message
             );
         }
+
+        echo json_encode($return);
+        
+        break;
+
+    case 'Respond Message':
+        
+        // print_r($data);
+        $idFrom = $data->idFrom;
+        $idTo = $data->idTo;
+        $emailFrom = $data->emailFrom;
+        $emailTo = $data->emailTo;
+        $userFrom = $data->userFrom;
+        $userTo = $data->userTo;
+        $respondMessage = $data->respondMessage;
+        $messageRead = 1;
+        
+        $insertMessage=$pdo->prepare("INSERT INTO message (id, idFrom, idTo, userFrom, userTo, emailFrom, emailTo, message, messageRead) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertMessage->bindValue(1, NULL);
+        $insertMessage->bindValue(2, $idFrom);
+        $insertMessage->bindValue(3, $idTo);
+        $insertMessage->bindValue(4, $userFrom);
+        $insertMessage->bindValue(5, $userTo);
+        $insertMessage->bindValue(6, $emailFrom);
+        $insertMessage->bindValue(7, $emailTo);
+        $insertMessage->bindValue(8, $respondMessage);
+        $insertMessage->bindValue(9, $messageRead);
+        $insertMessage->execute();
+
+        $return = array(
+            'message' => 'Mensagem respondida com sucesso'
+        );
 
         echo json_encode($return);
 
