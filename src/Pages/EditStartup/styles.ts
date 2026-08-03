@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const purple = "#3f3d89";
+const darkBlue = "#132B6B";
 
 export const Page = styled.div`
     min-height: 100vh;
@@ -13,7 +13,7 @@ export const TopHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 14px 32px;
-    background-color: ${purple};
+    background-color: ${darkBlue};
     color: #fff;
 `;
 
@@ -39,7 +39,7 @@ export const Sidebar = styled.aside`
     width: 220px;
     padding: 24px 20px;
     border-radius: 12px;
-    background-color: ${purple};
+    background-color: ${darkBlue};
     color: #fff;
 `;
 
@@ -174,7 +174,7 @@ export const ParticipateButton = styled.button`
     padding: 10px 48px;
     border: none;
     border-radius: 6px;
-    background-color: ${purple};
+    background-color: ${darkBlue};
     color: #fff;
     font-size: 15px;
     font-weight: 600;
