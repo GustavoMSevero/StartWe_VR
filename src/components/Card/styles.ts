@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-const purple = "#3f3d89";
+const darkBlue = "#132B6B";
 
 export const Sidebar = styled.aside`
     flex-shrink: 0;
     width: 250px;
     padding: 24px 20px;
     border-radius: 12px;
-    background-color: ${purple};
+    background-color: ${darkBlue};
     color: #fff;
 `;
 
