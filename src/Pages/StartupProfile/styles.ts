@@ -201,3 +201,19 @@ export const ButtonRegister = styled.button`
         background-color: #354499;
     }
 `;
+
+export const ButtonBack = styled.button`
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background-color:rgb(215, 217, 226);
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover {
+        background-color: #354499;
+    }
+`;
