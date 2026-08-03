@@ -31,9 +31,9 @@ export const Container = styled.div`
 export const DivLeft = styled.div`
     width: 50%;
     min-height: 100vh;
-    background-color: #6a3493;
-    /* background-image: url(${loginBackground}); */
-    background-size: 200% 100%;
+    background-color: #132B6B;
+    background-image: url(${loginBackground});
+    background-size: 100% 100%;
     background-position: left top;
     background-repeat: no-repeat;
 
