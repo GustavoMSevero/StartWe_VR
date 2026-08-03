@@ -43,7 +43,10 @@ function MyStartups() {
             },
         })
         .then(function(response) {
-            setMyStartups(response.data);
+            const data = Array.isArray(response.data) 
+            ? response.data 
+            : (response.data?.data ?? response.data?.startups ?? []);
+            setMyStartups(data);
             setCurrentPage(1);
         })
     }
@@ -80,7 +83,7 @@ function MyStartups() {
                     <Card />
 
                     <MainContent>
-                    {currentStartups.length > 0
+                    {Array.isArray(currentStartups) && currentStartups.length > 0
                         ? currentStartups.map((myStartups) => (
                                 <div key={myStartups.idStartup}>
                                 <InfoStartup>
@@ -150,7 +153,7 @@ function MyStartups() {
                     </Pagination>
                 )}
 
-                {totalItems === 0 && <p>Nenhum item cadastrado ainda.</p>}
+                {totalItems === 0 && <p>Nenhuma startup cadastrada ainda.</p>}
                     </MainContent>
                 </Body>
             </Page>
