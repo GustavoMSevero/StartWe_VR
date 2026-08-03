@@ -113,13 +113,14 @@ function Feed() {
 
                 <MainContent>
                     <StartupCard>
-                        <StartupLogo>
-                            <LogoIcon>🚀</LogoIcon>
-                            StartUs
-                        </StartupLogo>
-                        {currentStartups.length > 0
+                    {currentStartups.length > 0
                             ? currentStartups.map((startup) => (
                                   <div key={startup.idStartup}>
+                                    
+                                    <StartupLogo>
+                                        <LogoIcon>🚀</LogoIcon>
+                                        StartUs
+                                    </StartupLogo>
                                       <InfoBlock>
                                           <InfoLabel>Nome Startup:</InfoLabel>
                                           <InfoValue>{startup.nameStartup}</InfoValue>
