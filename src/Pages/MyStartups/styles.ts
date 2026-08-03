@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const purple = "#3f3d89";
+const darkBlue = "#132B6B";
 
 export const Page = styled.div`
     min-height: 100vh;
@@ -13,7 +13,7 @@ export const TopHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 14px 32px;
-    background-color: ${purple};
+    background-color: ${darkBlue};
     color: #fff;
 `;
 
