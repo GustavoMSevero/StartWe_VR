@@ -21,6 +21,7 @@ import {
     RadioItem,
     Footer,
     ButtonRegister,
+    ButtonBack,
 } from "./styles";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -372,6 +373,7 @@ function StartupProfile() {
                 <ButtonRegister type="submit" form="startup-profile-form">
                     Cadastrar
                 </ButtonRegister>
+                <ButtonBack type="button" onClick={() => navigate("/feed")}>Voltar</ButtonBack>
             </Footer>
         </Container>
     );
