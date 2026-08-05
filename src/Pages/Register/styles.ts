@@ -1,4 +1,7 @@
 import styled, { css } from "styled-components";
+import loginBackground from "../../assets/login-background.png";
+
+const darkBlue = "#132B6B";
 
 export const Container = styled.div`
     display: flex;
@@ -8,9 +11,13 @@ export const Container = styled.div`
 export const DivLeft = styled.div`
     display: flex;
     justify-content: center;
-    background-color: lightblue;
+    background-color: ${darkBlue};
+    background-image: url(${loginBackground});
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
     padding-top: 100px;
-    width: 60%;
+    width: 50%;
     height: 100vh;
 `;
 
@@ -19,7 +26,7 @@ export const DivRight = styled.div`
     justify-content: center;
     align-items: flex-start;
     padding-top: 80px;
-    width: 40%;
+    width: 50%;
     height: 100vh;
 `;
 
