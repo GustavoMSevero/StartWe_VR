@@ -72,7 +72,7 @@ function Register() {
 
     return (
         <Container>
-            <DivLeft>Esquerda</DivLeft>
+            <DivLeft></DivLeft>
             <DivRight>
                 <FormRegister onSubmit={submit}>
                     <FormRow $twoColumns>
